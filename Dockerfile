@@ -10,4 +10,4 @@ RUN uv sync --frozen
 
 COPY . .
 
-CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0"]
+CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0"].dockerignore
