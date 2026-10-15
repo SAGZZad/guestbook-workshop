@@ -1,13 +1,19 @@
+# История изменений
 
-# Changelog
+Все значимые изменения проекта будут документироваться в этом файле.
 
-All notable changes to this project will be documented in this file.
+## [0.1.0] — 2026-10-15
 
-## [0.1.0] - 2026-10-15
+### Добавлено
+- Приложение на FastAPI для гостевой книги.
+- Интеграция с базой данных PostgreSQL.
+- Конфигурация Dockerfile и Docker Compose.
+- Автоматическая проверка кода с помощью Ruff и тестирование с помощью pytest.
+- Рабочий процесс GitHub Actions для CI и публикации Docker-образа в GHCR.
 
-### Added
-- FastAPI application for the guestbook.
-- PostgreSQL database integration.
-- Dockerfile and Docker Compose configuration.
-- Ruff linting and pytest automated tests.
-- GitHub Actions workflow for CI and Docker image publishing to GHCR.
+
+## [0.2.0] - 2026-10-15
+
+### Добавлено
+- Подготовлена вторая версия для демонстрации обновления и отката Docker-образа.
+- Настроен выбор версии Docker-образа через переменную APP_VERSION в Docker Compose.
