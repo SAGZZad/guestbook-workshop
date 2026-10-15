@@ -1,4 +1,4 @@
-
+```yaml
 name: CI-CD
 
 on:
@@ -35,7 +35,7 @@ jobs:
       - name: Run tests
         run: uv run pytest
 
-    publish:
+  publish:
     name: Publish Docker image
     runs-on: ubuntu-latest
     needs: check
@@ -74,3 +74,4 @@ jobs:
           push: true
           tags: |
             ${{ steps.image.outputs.name }}:${{ github.ref == 'refs/heads/main' && 'latest' || github.ref_name }}
+```
