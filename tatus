@@ -1,0 +1,28 @@
+[1mdiff --git a/.github/workflows/ci.yml b/.github/workflows/ci.yml[m
+[1mindex f000584..bb7ab82 100644[m
+[1m--- a/.github/workflows/ci.yml[m
+[1m+++ b/.github/workflows/ci.yml[m
+[36m@@ -35,7 +35,7 @@[m [mjobs:[m
+       - name: Run tests[m
+         run: uv run pytest[m
+ [m
+[31m-  publish:[m
+[32m+[m[32m    publish:[m
+     name: Publish Docker image[m
+     runs-on: ubuntu-latest[m
+     needs: check[m
+[36m@@ -67,11 +67,10 @@[m [mjobs:[m
+           username: ${{ github.actor }}[m
+           password: ${{ secrets.GITHUB_TOKEN }}[m
+ [m
+[31m-      - name: Build and push image[m
+[32m+[m[32m      - name: Build and push Docker image[m
+         uses: docker/build-push-action@v6[m
+         with:[m
+           context: .[m
+           push: true[m
+           tags: |[m
+[31m-            ${{ steps.image.outputs.name }}:latest[m
+[31m-            ${{ steps.image.outputs.name }}:${{ github.ref_type == 'tag' && startsWith(github.ref_name, 'v') && github.ref_name || 'latest' }}[m
+[32m+[m[32m            ${{ steps.image.outputs.name }}:${{ github.ref == 'refs/heads/main' && 'latest' || github.ref_name }}[m
+\ No newline at end of file[m

@@ -35,7 +35,7 @@ jobs:
       - name: Run tests
         run: uv run pytest
 
-  publish:
+    publish:
     name: Publish Docker image
     runs-on: ubuntu-latest
     needs: check
@@ -67,11 +67,10 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push image
+      - name: Build and push Docker image
         uses: docker/build-push-action@v6
         with:
           context: .
           push: true
           tags: |
-            ${{ steps.image.outputs.name }}:latest
-            ${{ steps.image.outputs.name }}:${{ github.ref_type == 'tag' && startsWith(github.ref_name, 'v') && github.ref_name || 'latest' }}
+            ${{ steps.image.outputs.name }}:${{ github.ref == 'refs/heads/main' && 'latest' || github.ref_name }}
